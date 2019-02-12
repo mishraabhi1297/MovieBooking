@@ -1,0 +1,14 @@
+{
+  "name": "angularjs-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "angular-route.min.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "abhi",
+  "license": "ISC",
+  "dependencies": {
+    "lite-server": "^2.3.0"
+  }
+}

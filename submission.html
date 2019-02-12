@@ -1,0 +1,1417 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+<title>Template that uses Bootstrap</title>
+  <link rel="icon" type="image/jpg" href="images/ec.jpg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.php">Essential Cinemas</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+			  <li><a href="about.php">About Us</a></li>
+			  <li><a href="booking.php">Booking</a></li>
+			  <li><a href="mymovies.php">My Movies</a></li>
+			  <li><a href="contact.php">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+					if(! empty($_SESSION['custName']))
+					{
+						$loggedInCust = $_SESSION['custName'];
+						
+						echo "<li class='dropdown'>
+						<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Welcome, $loggedInCust
+						<span class='caret'></span></a>
+						<ul class='dropdown-menu'>
+						<li><a href='logout.php'>Logout</a></li>
+						</ul>
+						</li>";
+					}
+					else
+					{
+						echo "<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
+						<li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/12strong">
+          <img src="images/12strong.jpg" alt="12 Strong" style="width:100%">
+          <div class="caption">
+            <p>12 Strong</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/tomb">
+          <img src="images/tomb.jpg" alt="Tomb" style="width:100%">
+          <div class="caption">
+            <p>Tomb Raider</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/rampage">
+          <img class="img-responsive" src="images/rampage.jpg" alt="Rampage" style="width:100%">
+          <div class="caption">
+            <p>Rampage</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/redsparrow">
+          <img src="images/redsparrow.jpg" alt="Red Sparrow" style="width:100%">
+          <div class="caption">
+            <p>Red Sparrow</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/avengers">
+          <img src="images/avengers.jpg" alt="Avengers" style="width:100%">
+          <div class="caption">
+            <p>Avengers: Infinity War</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/wolf">
+          <img src="images/wolf.jpg" alt="Wolf of Wall Street" style="width:100%">
+          <div class="caption">
+            <p>Wolf of Wall Street</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/blockers">
+          <img src="images/blockers.jpg" alt="Blockers" style="width:100%">
+          <div class="caption">
+            <p>Blockers</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/thor">
+        <img src="images/thor.jpg" alt="Thor" style="width:100%">
+          <div class="caption">
+            <p>Thor: Ragnarok</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/spiderman">
+          <img src="images/spiderman.jpg" alt="Spiderman Homecoming" style="width:100%">
+          <div class="caption">
+            <p>Spiderman: Homecoming</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/black">
+          <img src="images/black.jpg" alt="Black Panther" style="width:100%">
+          <div class="caption">
+            <p>Black Panther</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/doctor">
+          <img src="images/doctor.jpg" alt="Doctor Strange" style="width:100%">
+          <div class="caption">
+            <p>Doctor Strange</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="thumbnail">
+        <a href="#sample/deadpool">
+          <img src="images/deadpool.jpg" alt="Deadpool" style="width:100%">
+          <div class="caption">
+            <p>Deadpool</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row" data-ng-view="">
+  </div><br/><br/>
+</div>
+
+<div class="row" style="background-color: black">
+  <div class="col-md-3">
+    <p style="color: white">Copyright</p>
+  </div>
+  <div class="col-md-3">
+    <p style="color: white">Opening Hours</p>
+  </div>
+  <div class="col-md-3">
+    <p style="color: white">News and Upcoming Movies</p>
+  </div>
+  <div class="col-md-3">
+    <p style="color: white">Countdown</p>
+  </div>
+</div>
+
+<!--</div>-->
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap plug-ins file -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="home.js"></script>
+</body>
+
+<?php
+
+$cnum = $_SESSION['cnum'];
+
+?>
+
+</html>
+
+
+<div data-ng-init = "movies = [{code:'12strong', name:'12 Strong', img:'images/12strong.jpg', desc:'12 Strong is a 2018 American war drama film directed by Nicolai Fuglsig and 
+written by Ted Tally and Peter Craig. The  film is based on Doug Stanton non-fiction book Horse Soldiers, which tells the story of CIA paramilitary officers and U.S. Special Forces, 
+which tells the story of CIA paramilitary officers and U.S. Special Forces, in addition to USAF Combat Controllers, sent to Afghanistan immediately after the September 11 attacks.', 
+cast:'Chris Hemsworth, Michael Shannon, Michael Peña, Navid Negahban, Trevante Rhodes, Geoff Stults, Thad Luckinbill, William Fichtner and Rob Riggle',
+youtube:'https://youtu.be/-Denciie5oA'},
+{code:'tomb', name:'Tomb Raider', img:'images/tomb.jpg', desc:'Lara Croft is the fiercely independent daughter of an eccentric adventurer who vanished years earlier. 
+Hoping to solve the mystery of her father disappearance, Croft embarks on a perilous journey to his last-known destination -- a fabled tomb on a mythical island that might be 
+somewhere off the coast of Japan. The stakes cannot be higher as Lara must rely on her sharp mind, blind faith and stubborn spirit to venture into the unknown.',
+cast:'Alicia Vikander ,Daniel Wu, Walton Goggins, Dominic West, Hannah John-Kamen, Kristin Scott Thomas, Nick Frost',
+youtube:'https://www.youtube.com/watch?v=8ndhidEmUbI'},
+{code:'rampage', name:'Rampage', img:'images/rampage.jpg', desc:'Global icon Dwayne Johnson headlines the action adventure Rampage, directed by Brad Peyton. 
+Johnson stars as primatologist Davis Okoye, a man who keeps people at a distance but shares an unshakable bond with George, the extraordinarily intelligent, incredibly rare 
+albino silverback gorilla who has been in his care since he rescued the young orphan from poachers. But a rogue genetic experiment gone awry mutates this gentle ape into a 
+raging creature of enormous size. To make matters worse, its soon discovered there are other similarly altered animals. As these newly created alpha predators tear across North America, 
+destroying everything in their path, Okoye teams with discredited geneticist Kate Caldwell (Naomie Harris) to secure an antidote, fighting his way through an ever-changing 
+battlefield, not only to halt a global catastrophe but to save the fearsome creature that was once his friend.',
+cast:'Swayne Johnson, Jeffrey Dean Morgan, Malin Akerman, Naomie Harris, Joe Manganiello, Jake Lacy, Jack Quaid',
+youtube:'https://www.youtube.com/watch?v=coOKvrsmQiI'},
+{code:'redsparrow', name:'Red Sparrow', img:'images/redsparrow.jpg', desc:'Prima ballerina Dominika Egorova faces a bleak and uncertain future after she suffers an injury that ends 
+her career. She soon turns to Sparrow School, a secret intelligence service that trains exceptional young people to use their minds and bodies as weapons. Egorova emerges as the 
+most dangerous Sparrow after completing the sadistic training process. As she comes to terms with her new abilities, Dominika meets a CIA agent who tries to convince her that he is 
+the only person she can trust.',
+cast:'Jennifer Lawrence, Joel Edgerton, Matthias Schoenaerts, Jeremy Irons, Joely Richardson, Charlotte Rampling, Thekla Reuten',
+youtube:'https://www.youtube.com/watch?v=PmUL6wMpMWw'},
+{code:'avengers', name:'Avengers: Infinity War', img:'images/avengers.jpg', desc:'Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy 
+yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and 
+existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.',
+cast:'Robert Downey Jr., Chris Pratt, Benedict Cumberbatch, Chris Evans, Scarlett Johansson, Chris Hemsworth, Tom Holland, Josh Brolin, Elizabeth Olsen, Mark Ruffalo, Chadwick Boseman',
+youtube:'https://www.youtube.com/watch?v=6ZfuNTqbHE8'},
+{code:'wolf', name:'The Wold of Wall Street', img:'images/wolf.jpg', desc:'In 1987, Jordan Belfort (Leonardo DiCaprio) takes an entry-level job at a Wall Street brokerage firm. 
+By the early 1990s, while still in his 20s, Belfort founds his own firm, Stratton Oakmont. Together with his trusted lieutenant (Jonah Hill) and a merry band of brokers, Belfort 
+makes a huge fortune by defrauding wealthy investors out of millions. However, while Belfort and his cronies partake in a hedonistic brew of sex, drugs and thrills, the SEC and the 
+FBI close in on his empire of excess.',
+cast:'Leonardo DiCaprio, Margot Robbie, Jonah Hill, Matthew McConaughey, Kyle Chandler, Cristin Milioti, Jon Bernthal, Rob Reiner',
+youtube:'https://www.youtube.com/watch?v=iszwuX1AK6A'},
+{code:'blockers', name:'Blockers', img:'images/blockers.jpg', desc:'Julie, Kayla and Sam are three high school seniors who make a pact to lose their virginity on prom night. 
+Lisa, Mitchell and Hunter are three overprotective parents who flip out when they find out about their daughters plans. They soon join forces for a wild and chaotic quest to stop 
+the girls from sealing the deal -- no matter what the cost.',
+cast:'John Cena, Leslie Mann, Ike Barinholtz, Kathryn Newton, Geraldine Viswanathan, Gideon Adlon, Graham Phillips',
+youtube:'https://www.youtube.com/watch?v=uMDVa4yoCWw'}]">
+
+    <div data-ng-repeat="movie in movies | filter: viewInfoID">
+		<h1>Movie: {{movie.name}}</h1>
+		<div class="row">
+			<div class="col-md-2">
+				<img src={{movie.img}} alt="12 Strong" style="height:280px;width:200px">
+			</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<p>{{movie.desc}}</p>
+				<h3>Cast:</h3>
+				<p>{{movie.cast}}</p>
+				<h3>Trailer:</h3>
+				<a href={{movie.youtube}}>Click here to watch the trailer</a>
+				<div></div><br/>
+				<input type="button" value="Book Now" class="btn btn-success" id="btnHome" 
+				onClick="document.location.href='booking.php'" />
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+<title>Template that uses Bootstrap and AngularJS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0" />
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/normalize.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the
+page via file:// -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+  
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.php">Essential Cinemas</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+			  <li><a href="about.php">About Us</a></li>
+			  <li class="active"><a href="booking.php">Booking</a></li>
+			  <li><a href="mymovies.php">My Movies</a></li>
+			  <li><a href="contact.php">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+					if(! empty($_SESSION['custName']))
+					{
+						$loggedInCust = $_SESSION['custName'];
+						
+						echo "<li class='dropdown'>
+						<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Welcome, $loggedInCust
+						<span class='caret'></span></a>
+						<ul class='dropdown-menu'>
+						<li><a href='logout.php'>Logout</a></li>
+						</ul>
+						</li>";
+					}
+					else
+					{
+						echo "<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
+						<li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div ui-view></div>
+</div>
+
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- All Bootstrap plug-ins file -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Basic AngularJS -->
+<!-- <script src="js/angular.min.js"></script> -->
+<script src="js/angular.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-ui-router.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<!-- My App JS -->
+<script src="booking.js"></script>
+
+</body>
+
+<?php
+
+$cnum = $_SESSION['cnum'];
+
+?>
+
+</html>
+
+
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+<title>Template that uses Bootstrap</title>
+  <link rel="icon" type="image/jpg" href="images/ec.jpg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.php">Essential Cinemas</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+			  <li><a href="about.php">About Us</a></li>
+			  <li><a href="booking.php">Booking</a></li>
+			  <li><a href="contact.php">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<form method="post">
+	<label>Name: <input type="text" name="name"/></label><br/>
+	<label>Email Address: <input type="text" name="email" /></label><br/>
+	<label>Password: <input type="password" name="pswrd" /></label><br/>
+	<label>Confirm Password: <input type="password" name="cpswrd" /></label><br/>
+	<input type="submit" value="Register" />
+</form>
+
+<!--</div>-->
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap plug-ins file -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+</body>
+
+<?php 
+
+if(isset($_POST['name']) && isset($_POST['pswrd']) && isset($_POST['cpswrd']) && isset($_POST['email']))
+{
+	// Assignment of different inputs provided by the User
+	$name = $_POST['name'];
+	$password = $_POST['pswrd'];
+	$cpassword = $_POST['cpswrd'];
+	$email = $_POST['email'];
+		
+	// To check if all the fields have been filled out or not
+	if($name == "" || $password == "" || $cpassword == "" || $email == "")
+	{
+		$message1 = "Please make sure that none of the input fields are empty";
+		echo "<script type='text/javascript'>alert('$message1');</script>";
+	}
+	
+	else
+	{	
+		// Once proceed if both the password and confirm password match
+		if($password == $cpassword)
+		{
+			// Open the Database connection
+			$DBConnection = @mysqli_connect("feenix-mariadb.swin.edu.au", "s100864950","120897", "s100864950_db")
+			Or die ("<p>Unable to connect to the database server.</p>". "<p>Error code ". 
+			mysqli_connect_errno().": ". mysqli_connect_error()). "</p>"; 
+			
+			$SQLstring = "select * from ECRegister where Email = '".$_POST['email']."'";
+			$queryResult = @mysqli_query($DBConnection, $SQLstring);
+			$rowcount = mysqli_num_rows($queryResult);
+				
+			//Unique Email Address Check
+			if ($rowcount == 1)
+			{
+				$message3 = "The Email Address you have entered already exists in the Database.";
+				echo "<script type='text/javascript'>alert('$message3');</script>";
+			}
+			else
+			{
+				$sqlString = "SELECT * FROM ECRegister";
+				$queryResult = @mysqli_query($DBConnection, $sqlString);
+				$numRows = mysqli_num_rows($queryResult);
+				
+				$assign_cno = $numRows + 101;
+				$_SESSION['cnumber'] = $assign_cno;
+						
+				// Set up of SQL strings and Execution
+				$Query = "insert into ECRegister values ('$assign_cno', '$name', '$email', '$password')";
+				$Results = mysqli_query($DBConnection, $Query);
+				
+				$message = "Dear $name, your are successfully registered into Essential Cinemas. Your Customer ID is $assign_cno, which will be used during login. We hope you enjoy watching movies at Essential Cinemas.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+				
+				mail($email, "Essential Cinemas Registration Conformation", $message, "From: donotreply@essentialcinemas.com");
+			
+				// Closing the Database Connection
+				mysqli_close($DBConnection);
+			}
+		}
+		
+		else 
+		{
+			$message2 = "Please make sure that your passwords match";
+			echo "<script type='text/javascript'>alert('$message2');</script>";
+		}	
+	}
+}
+		
+?>
+
+</html>
+
+
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+<title>Template that uses Bootstrap and AngularJS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0" />
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/normalize.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the
+page via file:// -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+  
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.php">Essential Cinemas</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+			  <li><a href="about.php">About Us</a></li>
+			  <li><a href="booking.php">Booking</a></li>
+			  <li class="active"><a href="mymovies.php">My Movies</a></li>
+			  <li><a href="contact.php">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+					if(! empty($_SESSION['custName']))
+					{
+						$loggedInCust = $_SESSION['custName'];
+						
+						echo "<li class='dropdown'>
+						<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Welcome, $loggedInCust
+						<span class='caret'></span></a>
+						<ul class='dropdown-menu'>
+						<li><a href='logout.php'>Logout</a></li>
+						</ul>
+						</li>";
+					}
+					else
+					{
+						echo "<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
+						<li><a href='login.php'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+					}
+				?>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- All Bootstrap plug-ins file -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Basic AngularJS -->
+<!-- <script src="js/angular.min.js"></script> -->
+<script src="js/angular.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-ui-router.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+
+</body>
+
+<?php
+
+$cnum = $_SESSION['cnum'];
+
+$DBConnection = @mysqli_connect("feenix-mariadb.swin.edu.au", "s100864950","120897", "s100864950_db")
+Or die ("<p>Unable to connect to the database server.</p>". "<p>Error code ". 
+mysqli_connect_errno().": ". mysqli_connect_error()). "</p>"; 
+				
+//run SQL query
+$SQLstring = "select m.Name, b.date, t.Name, s.Name, b.ticket 
+	from ECBooking b 
+	inner join ECMovie m on m.Id=b.movieNum
+	inner join ECTheatre t on t.Id=b.theatreNum
+	inner join ECShows s on s.Id=b.showNum
+	where b.cnum=$cnum";
+$queryResult = @mysqli_query($DBConnection, $SQLstring) 
+Or die ("<p>Unable to login.</p>");
+
+//To count the number of requests on that particular day
+$rowcount = mysqli_num_rows($queryResult);
+
+//To count the number of requests on that particular day
+$rowcount = mysqli_num_rows($queryResult);
+
+if ($rowcount == 0)
+{
+	echo "There are no records of any movie booked by you in our Database.";
+}
+
+//fetched Data representation in tabular form
+else
+{				
+	echo "<div class='container'><h3>My Movies</h3>";
+		
+	echo "<table class='table table-striped table-hover'>";
+	echo "<tr><th>Movie Name</th><th>Movie Date</th><th>Theatre Name</th><th>Show Time</th><th>Tickets</th></tr>";
+	$row = mysqli_fetch_row($queryResult);
+		
+	while ($row) 
+	{
+		echo "<tr><td>{$row[0]}</td>";
+		echo "<td>{$row[1]}</td>";
+		echo "<td>{$row[2]}</td>";
+		echo "<td>{$row[3]}</td>";
+		echo "<td>{$row[4]}</td></tr>";
+		$row = mysqli_fetch_row($queryResult);
+	}
+	echo "</table></div>";
+	
+	//Close Database
+	mysqli_close($DBConnection);
+}
+
+?>
+
+</html>
+
+
+<div class="conatiner">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+
+			<div id="form-container">
+
+				<div class="page-header text-center">
+					<h2 style="color:#ffffff">Book Your Movie Ticket</h2>
+
+					<!-- the links to our nested states using relative paths -->
+					<!-- add the active class if the state matches our ui-sref -->
+					<div id="status-buttons" class="text-center">
+						<a ui-sref-active="active" ui-sref=".movie"><span>1</span> Movie</a>
+						<a ui-sref-active="active" ui-sref=".theatre"><span>2</span> Theatre</a>
+						<a ui-sref-active="active" ui-sref=".quantity"><span>3</span> Quantity</a>
+						<a ui-sref-active="active" ui-sref=".seat"><span>4</span> Seat</a>
+						<a ui-sref-active="active" ui-sref=".payment"><span>5</span> Payment</a>
+					</div>
+				</div>
+
+				<!-- use ng-submit to catch the form submission and use our Angular function -->
+				<form id="signup-form" ng-submit="processForm()">
+
+					<!-- our nested state views will be injected here -->
+					<div id="form-views" ui-view></div>
+				</form>
+
+			</div>
+
+			<!-- show our formData as it is being typed -->
+			<!-- <pre>
+				{{formData}}
+				{{msg}}
+			</pre> -->
+
+		</div>
+	</div>
+</div>
+
+
+<?php
+session_start();
+?>
+
+<div class="form-group">
+    <label for="email">Email (where the booking cofirmation will be sent):</label>
+    <input type="text" class="form-control" name="email" ng-model="formData.email">
+</div>
+
+<?php
+
+// Open the Database connection
+$DBConnection = @mysqli_connect("feenix-mariadb.swin.edu.au", "s100864950","120897", "s100864950_db")
+Or die ("<p>Unable to connect to the database server.</p>". "<p>Error code ". 
+mysqli_connect_errno().": ". mysqli_connect_error()). "</p>"; 
+
+$result = $DBConnection->query("select Id, Name from ECMovie");
+
+echo "<div class='form-group'>
+	<label for='movie'>Select Movie:</label>
+	<select name='movie' class='form-control' ng-model='formData.movie'>";
+	
+	while($row = $result->fetch_assoc())
+	{
+		unset($id, $name);
+		$id = $row['Id'];
+		$name = $row['Name'];
+		echo "<option value='$id'>$name</option>";
+	}
+	
+echo "</select>
+	</div>";
+
+?>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+	</div>
+	<div class="col-sm-6">
+		<a ui-sref="template.theatre" class="btn btn-block btn-primary">
+		Next <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+	</div>
+</div>
+
+
+<?php
+session_start();
+$cnum = $_SESSION['cnum'];
+$quest = "<div ng-model='formData.cnum=$cnum'></div>";
+echo $quest;
+?>
+
+<div class="form-group">
+	<label for="card_type">Card Type:</label>
+	<select name="card_type" class="form-control" ng-model="formData.cardType">
+		<option value="visa">VISA</option>
+		<option value="master_card">MasterCard</option>
+		<option value="american_express">American Express</option>
+	</select>
+</div>
+
+<div class="form-group">
+    <label for="card_name">Name on Card:</label>
+    <input type="text" class="form-control" name="card_name" ng-model="formData.cardName">
+</div>
+
+<div class="form-group">
+    <label for="card_number">Card Number:</label>
+    <input type="number" class="form-control" name="card_number" ng-model="formData.cardNumber">
+</div>
+
+<div class="form-group">
+	<label for="valid_till">Valid Till:</label>
+	<input type="date" class="form-control" name="valid_till" ng-model="formData.validTill">
+</div>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+		<a ui-sref="template.seat" class="btn btn-block btn-info">
+		<span class="glyphicon glyphicon-circle-arrow-left"> Previous</a>
+	</div>
+	<div class="col-sm-6">
+		<button type="submit" class="btn btn-block btn-success">Submit</button>
+	</div>
+</div>
+
+
+<?php
+session_start();
+?>
+
+<br/><br/>
+<div class="form-group">
+	<div class="row" style="border:1px solid black;padding:10px;background-color:#8c8c8c">
+		<div class="col-sm-2" style="padding:10px">
+			<label>Adult (18-60):</label>
+		</div>
+		<div class="col-sm-6" style="padding:10px">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-left-minus btn btn-danger btn-number" ng-if="formData.quantityAdult>0" ng-click="formData.quantityAdult = formData.quantityAdult-1">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+				<input type="number" id="quantityAdult" name="quantityAdult" class="form-control" ng-model="formData.quantityAdult" value="10" min="1" max="100">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-right-plus btn btn-success btn-number" ng-click="formData.quantityAdult = formData.quantityAdult+1">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-4" style="padding:10px">
+			<p>Cost: AUD18 per person</p>
+		</div>
+	</div>
+	
+	<div class="row" style="border:1px solid black;padding:10px;background-color:#8c8c8c">
+		<div class="col-sm-2" style="padding:10px">
+			<label>Children (Under 18):</label>
+		</div>
+		<div class="col-sm-6" style="padding:10px">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-left-minus btn btn-danger btn-number" ng-if="formData.quantityChildren>0" ng-click="formData.quantityChildren = formData.quantityChildren-1">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+				<input type="number" id="quantityChildren" name="quantityChildren" class="form-control" ng-model="formData.quantityChildren" value="10" min="1" max="100">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-right-plus btn btn-success btn-number" ng-click="formData.quantityChildren = formData.quantityChildren+1">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-4" style="padding:10px">
+			<p>Cost: AUD15 per person</p>
+		</div>
+	</div>
+	
+	<div class="row" style="border:1px solid black;padding:10px;background-color:#8c8c8c">
+		<div class="col-sm-2" style="padding:10px">
+			<label>Senior Citizen (Over 60):</label>
+		</div>
+		<div class="col-sm-6" style="padding:10px">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-left-minus btn btn-danger btn-number" ng-if="formData.quantitySenior>0" ng-click="formData.quantitySenior = formData.quantitySenior-1">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+				<input type="number" id="quantitySenior" name="quantitySenior" class="form-control" ng-model="formData.quantitySenior" value="10" min="1" max="100">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-right-plus btn btn-success btn-number" ng-click="formData.quantitySenior = formData.quantitySenior+1">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-4" style="padding:10px">
+			<p>Cost: AUD10 per person</p>
+		</div>
+	</div>
+	
+	<div class="row" style="border:1px solid black;padding:10px;background-color:#8c8c8c">
+		<div class="col-sm-2" style="padding:10px">
+			<label>Concession:</label>
+		</div>
+		<div class="col-sm-6" style="padding:10px">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-left-minus btn btn-danger btn-number" ng-if="formData.quantityConcession>0" ng-click="formData.quantityConcession = formData.quantityConcession-1">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+				<input type="number" id="quantityConcession" name="quantityConcession" class="form-control" ng-model="formData.quantityConcession" value="10" min="1" max="100">
+				<span class="input-group-btn">
+					<button type="button" class="quantity-right-plus btn btn-success btn-number" ng-click="formData.quantityConcession = formData.quantityConcession+1">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-4" style="padding:10px">
+			<p>Cost: AUD12 per person</p>
+		</div>
+	</div>
+</div>
+
+<div ng-if="!formData.quantityAdult">
+	<div ng-init="formData.quantityAdult=0"></div>
+</div>
+
+<div ng-if="!formData.quantityChildren">
+	<div ng-init="formData.quantityChildren=0"></div>
+</div>
+
+<div ng-if="!formData.quantitySenior">
+	<div ng-init="formData.quantitySenior=0"></div>
+</div>
+
+<div ng-if="!formData.quantityConcession">
+	<div ng-init="formData.quantityConcession=0"></div>
+</div>
+
+<div>
+	<div ng-model="formData.totalTickets=formData.quantityAdult+formData.quantityChildren+formData.quantitySenior+formData.quantityConcession"></div>
+	<h3 ng-model="formData.totalPrice=calculateTotalPrice(formData.quantityAdult, formData.quantityChildren, formData.quantitySenior, formData.quantityConcession)">Total Price: AUD{{calculateTotalPrice(formData.quantityAdult, formData.quantityChildren, formData.quantitySenior, formData.quantityConcession)}}</h3>
+</div>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+		<a ui-sref="template.theatre" class="btn btn-block btn-info">
+		<span class="glyphicon glyphicon-circle-arrow-left"> Previous</a>
+	</div>
+	<div class="col-sm-6">
+		<a ui-sref="template.seat" class="btn btn-block btn-primary">
+		Next <span class="glyphicon glyphicon-circle-arrow-right"></a>
+	</div>
+</div>
+
+
+<?php
+session_start();
+?>
+
+<div class="screen">
+	<h1>Screen</h1>
+</div><br/><br/>
+
+<div>
+	<ol class="cabin fuselage">
+		<li class="row row--1">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A1" ng-model="formData.A1.checked" ng-click="checking(formData.A1)" ng-disabled="!formData.A1.checked && counter === formData.totalTickets" />
+					<label for="A1">A1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B1" ng-model="formData.B1.checked" ng-click="checking(formData.B1)" ng-disabled="!formData.B1.checked && counter === formData.totalTickets" />
+					<label for="B1">B1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C1" ng-model="formData.C1.checked" ng-click="checking(formData.C1)" ng-disabled="!formData.C1.checked && counter === formData.totalTickets" />
+					<label for="C1">C1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D1" ng-model="formData.D1.checked" ng-click="checking(formData.D1)" ng-disabled="!formData.D1.checked && counter === formData.totalTickets" />
+					<label for="D1">D1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E1" ng-model="formData.E1.checked" ng-click="checking(formData.E1)" ng-disabled="!formData.E1.checked && counter === formData.totalTickets" />
+					<label for="E1">E1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F1" ng-model="formData.F1.checked" ng-click="checking(formData.F1)" ng-disabled="!formData.F1.checked && counter === formData.totalTickets" />
+					<label for="F1">F1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G1" ng-model="formData.G1.checked" ng-click="checking(formData.G1)" ng-disabled="!formData.G1.checked && counter === formData.totalTickets" />
+					<label for="G1">G1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H1" ng-model="formData.H1.checked" ng-click="checking(formData.H1)" ng-disabled="!formData.H1.checked && counter === formData.totalTickets" />
+					<label for="H1">H1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I1" ng-model="formData.I1.checked" ng-click="checking(formData.I1)" ng-disabled="!formData.I1.checked && counter === formData.totalTickets" />
+					<label for="I1">I1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J1" ng-model="formData.J1.checked" ng-click="checking(formData.J1)" ng-disabled="!formData.J1.checked && counter === formData.totalTickets" />
+					<label for="J1">J1</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K1" ng-model="formData.K1.checked" ng-click="checking(formData.K1)" ng-disabled="!formData.K1.checked && counter === formData.totalTickets" />
+					<label for="K1">K1</label>
+				</li>
+			</ol>
+		</li>
+		
+		<li class="row row--2">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A2" ng-model="formData.A2.checked" ng-click="checking(formData.A2)" ng-disabled="!formData.A2.checked && counter === formData.totalTickets" />
+					<label for="A2">A2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B2" ng-model="formData.B2.checked" ng-click="checking(formData.B2)" ng-disabled="!formData.B2.checked && counter === formData.totalTickets" />
+					<label for="B2">B2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C2" ng-model="formData.C2.checked" ng-click="checking(formData.C2)" ng-disabled="!formData.C2.checked && counter === formData.totalTickets" />
+					<label for="C2">C2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D2" ng-model="formData.D2.checked" ng-click="checking(formData.D2)" ng-disabled="!formData.D2.checked && counter === formData.totalTickets" />
+					<label for="D2">D2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E2" ng-model="formData.E2.checked" ng-click="checking(formData.E2)" ng-disabled="!formData.E2.checked && counter === formData.totalTickets" />
+					<label for="E2">E2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F2" ng-model="formData.F2.checked" ng-click="checking(formData.F2)" ng-disabled="!formData.F2.checked && counter === formData.totalTickets" />
+					<label for="F2">F2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G2" ng-model="formData.G2.checked" ng-click="checking(formData.G2)" ng-disabled="!formData.G2.checked && counter === formData.totalTickets" />
+					<label for="G2">G2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H2" ng-model="formData.H2.checked" ng-click="checking(formData.H2)" ng-disabled="!formData.H2.checked && counter === formData.totalTickets" />
+					<label for="H2">H2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I2" ng-model="formData.I2.checked" ng-click="checking(formData.I2)" ng-disabled="!formData.I2.checked && counter === formData.totalTickets" />
+					<label for="I2">I2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J2" ng-model="formData.J2.checked" ng-click="checking(formData.J2)" ng-disabled="!formData.J2.checked && counter === formData.totalTickets" />
+					<label for="J2">J2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K2" ng-model="formData.K2.checked" ng-click="checking(formData.K2)" ng-disabled="!formData.K2.checked && counter === formData.totalTickets" />
+					<label for="K2">K2</label>
+				</li>
+			</ol>
+		</li>
+		
+		<li class="row row--3">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A3" ng-model="formData.A3.checked" ng-click="checking(formData.A3)" ng-disabled="!formData.A3.checked && counter === formData.totalTickets" />
+					<label for="A3">A3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B3" ng-model="formData.B3.checked" ng-click="checking(formData.B3)" ng-disabled="!formData.B3.checked && counter === formData.totalTickets" />
+					<label for="B3">B3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C3" ng-model="formData.C3.checked" ng-click="checking(formData.C3)" ng-disabled="!formData.C3.checked && counter === formData.totalTickets" />
+					<label for="C3">C3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D3" ng-model="formData.D3.checked" ng-click="checking(formData.D3)" ng-disabled="!formData.D3.checked && counter === formData.totalTickets" />
+					<label for="D3">D3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E3" ng-model="formData.E3.checked" ng-click="checking(formData.E3)" ng-disabled="!formData.E3.checked && counter === formData.totalTickets" />
+					<label for="E3">E3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F3" ng-model="formData.F3.checked" ng-click="checking(formData.F3)" ng-disabled="!formData.F3.checked && counter === formData.totalTickets" />
+					<label for="F3">F3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G3" ng-model="formData.G3.checked" ng-click="checking(formData.G3)" ng-disabled="!formData.G3.checked && counter === formData.totalTickets" />
+					<label for="G3">G3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H3" ng-model="formData.H3.checked" ng-click="checking(formData.H3)" ng-disabled="!formData.H3.checked && counter === formData.totalTickets" />
+					<label for="H3">H3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I3" ng-model="formData.I3.checked" ng-click="checking(formData.I3)" ng-disabled="!formData.I3.checked && counter === formData.totalTickets" />
+					<label for="I3">I3</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J3" ng-model="formData.J3.checked" ng-click="checking(formData.J3)" ng-disabled="!formData.J3.checked && counter === formData.totalTickets" />
+					<label for="J2">J2</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K3" ng-model="formData.K3.checked" ng-click="checking(formData.K3)" ng-disabled="!formData.K3.checked && counter === formData.totalTickets" />
+					<label for="K3">K3</label>
+				</li>
+			</ol>
+		</li>
+		
+		<li class="row row--4">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A4" ng-model="formData.A4.checked" ng-click="checking(formData.A4)" ng-disabled="!formData.A4.checked && counter === formData.totalTickets" />
+					<label for="A4">A4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B4" ng-model="formData.B4.checked" ng-click="checking(formData.B4)" ng-disabled="!formData.B4.checked && counter === formData.totalTickets" />
+					<label for="B4">B4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C4" ng-model="formData.C4.checked" ng-click="checking(formData.C4)" ng-disabled="!formData.C4.checked && counter === formData.totalTickets" />
+					<label for="C4">C4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D4" ng-model="formData.D4.checked" ng-click="checking(formData.D4)" ng-disabled="!formData.D4.checked && counter === formData.totalTickets" />
+					<label for="D4">D4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E4" ng-model="formData.E4.checked" ng-click="checking(formData.E4)" ng-disabled="!formData.E4.checked && counter === formData.totalTickets" />
+					<label for="E4">E4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F4" ng-model="formData.F4.checked" ng-click="checking(formData.F4)" ng-disabled="!formData.F4.checked && counter === formData.totalTickets" />
+					<label for="F4">F4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G4" ng-model="formData.G4.checked" ng-click="checking(formData.G4)" ng-disabled="!formData.G4.checked && counter === formData.totalTickets" />
+					<label for="G4">G4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H4" ng-model="formData.H4.checked" ng-click="checking(formData.H4)" ng-disabled="!formData.H4.checked && counter === formData.totalTickets" />
+					<label for="H4">H4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I4" ng-model="formData.I4.checked" ng-click="checking(formData.I4)" ng-disabled="!formData.I4.checked && counter === formData.totalTickets" />
+					<label for="I4">I4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J4" ng-model="formData.J4.checked" ng-click="checking(formData.J4)" ng-disabled="!formData.J4.checked && counter === formData.totalTickets" />
+					<label for="J4">J4</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K4" ng-model="formData.K4.checked" ng-click="checking(formData.K4)" ng-disabled="!formData.K4.checked && counter === formData.totalTickets" />
+					<label for="K4">K4</label>
+				</li>
+			</ol>
+		</li>
+		
+		<li class="row row--5">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A5" ng-model="formData.A5.checked" ng-click="checking(formData.A5)" ng-disabled="!formData.A5.checked && counter === formData.totalTickets" />
+					<label for="A5">A5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B5" ng-model="formData.B5.checked" ng-click="checking(formData.B5)" ng-disabled="!formData.B5.checked && counter === formData.totalTickets" />
+					<label for="B5">B5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C5" ng-model="formData.C5.checked" ng-click="checking(formData.C5)" ng-disabled="!formData.C5.checked && counter === formData.totalTickets" />
+					<label for="C5">C5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D5" ng-model="formData.D5.checked" ng-click="checking(formData.D5)" ng-disabled="!formData.D5.checked && counter === formData.totalTickets" />
+					<label for="D5">D5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E5" ng-model="formData.E5.checked" ng-click="checking(formData.E5)" ng-disabled="!formData.E5.checked && counter === formData.totalTickets" />
+					<label for="E5">E5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F5" ng-model="formData.F5.checked" ng-click="checking(formData.F5)" ng-disabled="!formData.F5.checked && counter === formData.totalTickets" />
+					<label for="F5">F5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G5" ng-model="formData.G5.checked" ng-click="checking(formData.G5)" ng-disabled="!formData.G5.checked && counter === formData.totalTickets" />
+					<label for="G5">G5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H5" ng-model="formData.H5.checked" ng-click="checking(formData.H5)" ng-disabled="!formData.H5.checked && counter === formData.totalTickets" />
+					<label for="H5">H5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I5" ng-model="formData.I5.checked" ng-click="checking(formData.I5)" ng-disabled="!formData.I5.checked && counter === formData.totalTickets" />
+					<label for="I5">I5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J5" ng-model="formData.J5.checked" ng-click="checking(formData.J5)" ng-disabled="!formData.J5.checked && counter === formData.totalTickets" />
+					<label for="J5">J5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K5" ng-model="formData.K5.checked" ng-click="checking(formData.K5)" ng-disabled="!formData.K5.checked && counter === formData.totalTickets" />
+					<label for="K5">K5</label>
+				</li>
+			</ol>
+		</li>
+		
+		<li class="row row--6">
+			<ol class="seats" type="A">
+				<li class="seat">
+					<input type="checkbox" id="A6" ng-model="formData.A6.checked" ng-click="checking(formData.A6)" ng-disabled="!formData.A6.checked && counter === formData.totalTickets" />
+					<label for="A6">A6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="B6" ng-model="formData.B6.checked" ng-click="checking(formData.B6)" ng-disabled="!formData.B6.checked && counter === formData.totalTickets" />
+					<label for="B6">B6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="C6" ng-model="formData.C6.checked" ng-click="checking(formData.C6)" ng-disabled="!formData.C6.checked && counter === formData.totalTickets" />
+					<label for="C6">C6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="D6" ng-model="formData.D6.checked" ng-click="checking(formData.D6)" ng-disabled="!formData.D6.checked && counter === formData.totalTickets" />
+					<label for="D6">D6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="E6" ng-model="formData.E6.checked" ng-click="checking(formData.E6)" ng-disabled="!formData.E6.checked && counter === formData.totalTickets" />
+					<label for="E6">E6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="F6" ng-model="formData.F6.checked" ng-click="checking(formData.F6)" ng-disabled="!formData.F6.checked && counter === formData.totalTickets" />
+					<label for="F6">F6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="G6" ng-model="formData.G6.checked" ng-click="checking(formData.G6)" ng-disabled="!formData.G6.checked && counter === formData.totalTickets" />
+					<label for="G6">G6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="H6" ng-model="formData.H6.checked" ng-click="checking(formData.H6)" ng-disabled="!formData.H6.checked && counter === formData.totalTickets" />
+					<label for="H6">H6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="I6" ng-model="formData.I6.checked" ng-click="checking(formData.I6)" ng-disabled="!formData.I6.checked && counter === formData.totalTickets" />
+					<label for="I5">I5</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="J6" ng-model="formData.J6.checked" ng-click="checking(formData.J6)" ng-disabled="!formData.J6.checked && counter === formData.totalTickets" />
+					<label for="J6">J6</label>
+				</li>
+				<li class="seat">
+					<input type="checkbox" id="K6" ng-model="formData.K6.checked" ng-click="checking(formData.K6)" ng-disabled="!formData.K6.checked && counter === formData.totalTickets" />
+					<label for="K6">K6</label>
+				</li>
+			</ol>
+		</li>
+	</ol>
+</div>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+		<a ui-sref="template.quantity" class="btn btn-block btn-info">
+		<span class="glyphicon glyphicon-circle-arrow-left"> Previous</a>
+	</div>
+	<div class="col-sm-6">
+		<a ui-sref="template.payment" class="btn btn-block btn-primary">
+		Next <span class="glyphicon glyphicon-circle-arrow-right"></a>
+	</div>
+</div>
+
+
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+<title>Template that uses Bootstrap</title>
+  <link rel="icon" type="image/jpg" href="images/ec.jpg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.php">Essential Cinemas</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+			  <li><a href="about.php">About Us</a></li>
+			  <li><a href="booking.php">Booking</a></li>
+			  <li><a href="contact.php">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<form method="post">
+	<label>Customer Number: <input type="number" name="cnum" /></label><br/>
+	<label>Password: <input type="password" name="pswrd" /></label><br/>
+	<input type="submit" value="Login" />
+</form>
+
+<!--</div>-->
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap plug-ins file -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+</body>
+
+<?php 
+
+//Abhishek Mishra (100864950)
+//This page is used for login purposes once a user is registered into the system
+
+//if all fields filled out
+if(isset($_POST['cnum']) && isset($_POST['pswrd']) )
+{	
+	//assign variables
+	$cnum = $_POST['cnum'];
+	$password = $_POST['pswrd'];
+	$_SESSION['cnum'] = "$cnum";
+	
+	// Open the Database connection
+	$DBConnection = @mysqli_connect("feenix-mariadb.swin.edu.au", "s100864950","120897", "s100864950_db")
+	Or die ("<p>Unable to connect to the database server.</p>". "<p>Error code ". 
+	mysqli_connect_errno().": ". mysqli_connect_error()). "</p>"; 
+					
+	//run SQL query
+	$SQLstring = "select * from ECRegister where Id = '".$_POST['cnum']."' and Password = '".$_POST['pswrd']."'";
+	$queryResult = @mysqli_query($DBConnection, $SQLstring) 
+		Or die ("<p>Unable to login.</p>");
+	$rowcount = mysqli_num_rows($queryResult);
+	
+	//if the query result bring 1 row then redirect
+	if($rowcount == 1)
+	{
+		$SQLstring1 = "select Name from ECRegister where Id = '".$_POST['cnum']."' and Password = '".$_POST['pswrd']."'";
+		$queryResult1 = @mysqli_query($DBConnection, $SQLstring1) 
+		Or die ("<p>Unable to login.</p>");
+		$getCustName = mysqli_fetch_assoc($queryResult1);
+		$_SESSION['custName'] = $getCustName['Name'];
+		header("Location: home.php");
+	}
+	
+	//if the query result brings 0 rows then invalid detail entered
+	else
+	{	
+		$message = "Invalid Customer Number or Password";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+	}
+	
+	//Close the Database Connection
+	mysqli_close($DBConnection);
+}
+ 
+?> 
+
+</html>
+
+
+
+<?php
+session_start();
+?>
+
+<div class="form-group">
+	<label for="date">Please select a Date:</label>
+	<input type="date" class="form-control" name="date" ng-model="formData.date">
+</div>
+
+<?php
+
+// Open the Database connection
+$DBConnection = @mysqli_connect("feenix-mariadb.swin.edu.au", "s100864950","120897", "s100864950_db")
+Or die ("<p>Unable to connect to the database server.</p>". "<p>Error code ". 
+mysqli_connect_errno().": ". mysqli_connect_error()). "</p>"; 
+
+//Display the list of theatres
+$result = $DBConnection->query("select Id, Name from ECTheatre");
+
+echo "<div class='form-group'>
+	<label for='theatre'>Select Theatre:</label>
+	<select name='theatre' class='form-control' ng-model='formData.theatre'>";
+	
+	while($row = $result->fetch_assoc())
+	{
+		unset($id, $name);
+		$id = $row['Id'];
+		$name = $row['Name'];
+		echo "<option value='$id'>$name</option>";
+	}
+	
+echo "</select>
+	</div>";
+
+//Display the radio buttons for show times	
+$result1 = $DBConnection->query("select Id, Name from ECShows");
+
+echo "<div class='form-group'>
+	<label for='show'>Select Show Timing:</label>";
+	
+	while($row1 = $result1->fetch_assoc())
+	{
+		unset($id1, $name1);
+		$id1 = $row1['Id'];
+		$name1 = $row1['Name'];
+		//echo "<option value='$id1'>$name1</option>";
+		echo "<div class='radio'>
+			<label>
+			<input type='radio' ng-model='formData.show' value='$id1'>$name1
+			</label>
+			</div>";
+	}
+	
+echo "</div>";
+
+?>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+		<a ui-sref="template.movie" class="btn btn-block btn-info">
+		<span class="glyphicon glyphicon-circle-arrow-left"> Previous</a>
+	</div>
+	<div class="col-sm-6">
+		<a ui-sref="template.quantity" class="btn btn-block btn-primary">
+		Next <span class="glyphicon glyphicon-circle-arrow-right"></a>
+	</div>
+</div>
+
+
+<?php
+
+session_start();
+session_destroy();
+header("Location: home.php");
+exit();
+
+?>
+
+

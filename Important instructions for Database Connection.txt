@@ -1,0 +1,10 @@
+Connect to MySQL Database:
+
+1. Open Putty.
+2. mercury.swin.edu.au
+3. Login as: s100864950
+4. Password: Abhi1297!@#
+5. mysql
+6. 120897
+7. use s100864950_db
+8. Now do whatever you want dickhead
